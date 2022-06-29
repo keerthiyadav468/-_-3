@@ -1,0 +1,50 @@
+import java.util.*;
+import java.util.Random;
+public class NumberGuessingGame {
+	public static void main(String[] args) {
+		//To Generates a random number between 0 to 100
+		int RandomNo = (int)(Math.random()*100);
+		System.out.println("**NUMBER GUESSING GAME**");
+		System.out.println("\nWelcome !! These are some rules you have to follow to play this game");
+		System.out.println("\n1.You have to guess a number between 1 to 100");
+		System.out.println("2.If the number you guessed does not match with the generated number then it will display your guessed Number is greater or smaller than generated number ");
+		System.out.println("3.There are 5 chances for each person ");
+		System.out.println("4.The one who guesses the number in minimum chances is the winner");
+		System.out.println("Let's start the game");
+		Scanner in = new Scanner(System.in);
+		int chances=5;
+		int i=0; 
+		int points=100;
+		while(i<chances) {
+			int GuessedNo=in.nextInt();
+			if(GuessedNo==RandomNo) {
+				System.out.println("Congratulations");
+				System.out.println("Your guessed number matched in "+(i+1)+"attempts");
+				System.out.println("Your points"+points);
+				break;
+			}
+			else if(GuessedNo<RandomNo && i!=chances-1) {
+				points=points-20;
+				System.out.println("OOPS!!");
+				System.out.println("Your guessed Number is smaller than Random Number");
+				System.out.println("Your points"+points);
+				
+			}
+			else if(GuessedNo>RandomNo && i!=chances-1) {
+				points=points-20;
+				System.out.println("OOPS!!");
+				System.out.println("Your guessed Number is greater than Random Number");
+				System.out.println("Your points"+points);
+				
+			}
+			
+			i++;
+		}
+		if(i==chances) {
+			System.out.println("Your chances got expired,the Number was:"+RandomNo);
+			System.out.println("Your Score is"+points);
+			System.out.println("(: BETTER LUCK NEXT TIME :)");
+		}
+	}
+
+}
